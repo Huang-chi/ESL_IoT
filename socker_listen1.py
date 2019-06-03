@@ -6,8 +6,8 @@ from modify_dockerfile import modify_dockerfile_port
 
 def serverrr(port):
 
-#     HOST = '172.17.0.2'
-    HOST = '192.168.112.133'
+    HOST = '172.17.0.2'
+    # HOST = '127.0.0.1'
     PORT = 8002
 
 
@@ -22,3 +22,17 @@ def serverrr(port):
         #     break
         s.close
     print('Received', repr(data))
+
+    # with open('container_port.csv', newline='') as csvfile:
+    #     # Read CSV to dictionary
+    #     rows = csv.DictReader(csvfile)
+    #     temp = []
+    #     for row in rows:
+    #         print(row)
+    #         temp.append(row['container_name'])
+    #     len = len(temp)
+    #     container_name = temp[len-1][:len-2]+str(int(temp[len-1][len-2:])+1)
+    #     modify_dockerfile_port(container_name)
+    #     create_container(container_name)
+
+    #     csvfile.close()

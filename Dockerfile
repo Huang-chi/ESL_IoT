@@ -6,9 +6,9 @@ CMD ["/sbin/my_init"]
 # ...put your own build instructions here...
 WORKDIR /app
 COPY . /app
-# ADD https://bootstrap.pypa.io/get-pip.py /app/get-pip.py
-ADD ./socker_listen.py /app
-ADD ./script.py /app
+ADD https://bootstrap.pypa.io/get-pip.py /app/get-pip.py
+# ADD .socker_listen.py /app/socker_listen.py
+# ADD .script.py /app/script.py
 
 RUN add-apt-repository ppa:jonathonf/python-2.7 && \
     apt-get update && \
@@ -21,7 +21,9 @@ RUN pip install requests
 
 RUN chmod -R 777 /app
 # CMD ["python2.7", "main.py", "--cmd", "watcher"]
-CMD ["python3", "script.py", 6002]
+CMD ["python3", "script.py", "6006"]
 
 # Clean up APT when done.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+EXPOSE 8002
