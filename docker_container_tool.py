@@ -90,9 +90,9 @@ if __name__ == "__main__":
 
     if args.dockerfile != "NULL" :
         print("Build dockerfile's named "+args.dockerfile)
-        # build_container(args.dockerfile)
+        build_container(args.dockerfile)
         print("Run mangement container's named "+args.dockerfile)
-        # mangement_container_name = run_container(mangement_container_name,args.dockerfile)
+        mangement_container_name = run_container(mangement_container_name,args.dockerfile)
     
 
     if args.category != "NULL" :
@@ -101,8 +101,8 @@ if __name__ == "__main__":
 
 
     container_name = get_new_container_name(category)
-    # modify_dockerfile_port(container_name)
-    # create_container(mangement_container_name,container_name)
+    modify_dockerfile_port(container_name)
+    create_container(mangement_container_name,container_name)
 
     # delete_conttoller("test2")
     # show_all_container()

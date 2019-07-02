@@ -1,14 +1,12 @@
 #!/usr/bin/env python python3
 
 import socket
-from docker_container_tool import create_container
-from modify_dockerfile import modify_dockerfile_port
 
-def serverrr(port):
+def listen_outside_network(port):
 
 #     HOST = '172.17.0.2'
     HOST = '192.168.112.133'
-    PORT = 8002
+    PORT = port
 
 
     with socket.socket(socket.AF_INET , socket.SOCK_STREAM) as s:
@@ -22,3 +20,4 @@ def serverrr(port):
         #     break
         s.close
     print('Received', repr(data))
+    return repr(data)
