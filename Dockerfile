@@ -21,7 +21,7 @@ RUN pip install requests
 
 RUN chmod -R 777 /app
 # CMD ["python2.7", "main.py", "--cmd", "watcher"]
-CMD ["python3", "script.py", "6005"]
+CMD ["python3", "script.py", "6006"]
 
 # Clean up APT when done.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
