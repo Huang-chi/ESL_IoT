@@ -84,7 +84,10 @@ class design_buff():
             print("Now, Don't receive any data.")
 
 values = {'id': 3, 'power': 333}
+values1 = {'id': 5, 'power': 333}
 a = design_buff()
+a.run_buff(values)
+a.run_buff(values1)
 a.run_buff(values)
 result_array = a.show_buff()
 print(result_array)

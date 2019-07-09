@@ -99,6 +99,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                 #for i in range(200):
                 #    print(ts_data[i])
                 #TEST THE ANOMALY
+
 #==============================================================================
 # BLOCK IF WE WANT START INFERENCING AFTER 200 ROWS OF DATA OR 1 TIMESTEP
 #                if (j < TIMESTEP) : 
