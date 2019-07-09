@@ -15,6 +15,7 @@ def get_new_container_name(category):
 
         print(data_length)
         print(temp[data_length-1][CONTAINER_WORD_LENGTH:])
+        print(category)
 
         container_name = "container_"+category[:2]+"_"+str(int(temp[data_length-1][CONTAINER_WORD_LENGTH:])+1)
         print(container_name)

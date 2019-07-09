@@ -19,7 +19,10 @@ FROM debian:stretch
 
 #MAINTAINER gw0 [http://gw.tnode.com/] <gw.2018@ena.one>
 
-ADD ./app /app
+#ADD ./app /app
+
+WORKDIR /app
+COPY . /app
 
 # install debian packages
 ENV DEBIAN_FRONTEND noninteractive

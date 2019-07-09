@@ -1,4 +1,6 @@
-FROM phusion/baseimage:0.10.1
+#FROM phusion/baseimage:0.10.1
+From debian:stretch
+
 
 # Use baseimage-docker's init system.
 CMD ["/sbin/my_init"]
@@ -10,8 +12,7 @@ ADD https://bootstrap.pypa.io/get-pip.py /app/get-pip.py
 # ADD .socker_listen.py /app/socker_listen.py
 # ADD .script.py /app/script.py
 
-RUN add-apt-repository ppa:jonathonf/python-2.7 && \
-    apt-get update && \
+RUN apt-get update && \
     apt-get install -y python2.7 &&\
     apt-get -y install netcat
 
