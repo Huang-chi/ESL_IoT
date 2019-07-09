@@ -84,27 +84,24 @@ if __name__ == "__main__":
     parser.add_argument("-c", "--category", type=str, default="NULL", help='Chooses category')
     args = parser.parse_args()
 
-
-    mangement_container_name = "container_1"
     category = ""
 
+    if args.category != "NULL":
+        args.category = args.category.upper()
+        if args.category == "DNN" or args.category == "BC":
+            print("Create container category "+args.category)
+            category = args.category
+        else:
+            print("Don't suppert the caregory :"+args.category)
+
+    container_name = get_new_container_name(category)
+    modify_dockerfile_port(container_name, category)
+
+    mangement_container_name = "container_1"
     if args.dockerfile != "NULL" :
         print("Build dockerfile's named "+args.dockerfile)
         build_container(args.dockerfile)
         print("Run mangement container's named "+args.dockerfile)
-        mangement_container_name = run_container(mangement_container_name,args.dockerfile)
-    
+        mangement_container_name = run_container(mangement_container_name, args.dockerfile)
 
-    if args.category != "NULL" :
-        print("Create container category "+args.category)
-        category = args.category
-
-
-    container_name = get_new_container_name(category)
-    modify_dockerfile_port(container_name)
-    create_container(mangement_container_name,container_name)
-
-    # delete_conttoller("test2")
-    # show_all_container()
-
-        
+    create_container(mangement_container_name, container_name)
