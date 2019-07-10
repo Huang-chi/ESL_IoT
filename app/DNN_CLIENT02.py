@@ -117,8 +117,10 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             #s.sendall('END'.encode())
             data = s.recv(1024)
             print('Received', repr(data))
+
             strdata = str(data)[2:-1] #to remove the 'b   '
             dw = strdata.split(',')
+            
             x[i][0] = int(dw[0])
             x[i][1] = float(dw[1])
             x[i][2] = float(dw[2])

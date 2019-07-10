@@ -17,6 +17,12 @@ def listen_inner_network(port):
         conn, addr = s.accept()
         with conn:
             print('Connected by', addr )
-            data = conn.recv(1024)
+            data = conn.recv(16)
+            print(type(repr(data)))
+            print(repr(data)[2:-1])
+
+            print('Connected by', addr )
+            data = conn.recv(int(repr(data)[2:-1]))
+
     print('Received', repr(data))
     return repr(data)
