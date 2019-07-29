@@ -4,7 +4,7 @@ CONTAINER_WORD_LENGTH = 13
 
 
 def get_new_container_name(category):
-    with open('container_port.csv', newline='') as csvfile:
+    with open('./container_port.csv', newline='') as csvfile:
         # Read CSV to dictionary
         rows = csv.DictReader(csvfile)
         temp = []
@@ -21,5 +21,3 @@ def get_new_container_name(category):
         print(container_name)
         return container_name
 
-# if __name__ == '__main__':
-#     print(get_new_container_name())

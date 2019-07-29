@@ -2,7 +2,7 @@ import csv
 DEFINE_PORT = 6000
 
 def check_no_same_port(new_port = None):
-    with open('container_port.csv', newline='') as csvfile:
+    with open('./container_port.csv', newline='') as csvfile:
         # Read CSV to dictionary
         rows = csv.DictReader(csvfile)
 

@@ -1,9 +1,14 @@
 import subprocess
-from modify_dockerfile import modify_dockerfile_port
-from create_container_name import get_new_container_name
 import csv
 import sys
+import os
 import argparse
+
+sys.path.append(os.path.join(os.path.dirname(__file__),'lib'))
+
+from modify_dockerfile import modify_dockerfile_port
+from create_container_name import get_new_container_name
+
 
 CONTAINER_WORD_LENGTH = 12
 
