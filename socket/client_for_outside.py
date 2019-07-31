@@ -3,9 +3,9 @@
 import socket
 import sys
 
-# HOST = '172.17.0.2'
-HOST = '192.168.112.133'
-PORT = 6000
+HOST = '172.17.0.2' # container
+#HOST = '192.168.112.133' # host
+PORT = 8002
 
 def socket_connect(data):
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:

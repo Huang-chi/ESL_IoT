@@ -13,10 +13,12 @@ ADD https://bootstrap.pypa.io/get-pip.py /app/get-pip.py
 # ADD .script.py /app/script.py
 
 RUN apt-get update && \
-    apt-get install -y python2.7 &&\
+    apt-get install -y python3 &&\
     apt-get -y install netcat
 
-RUN python2.7 get-pip.py
+RUN apt-get install vim -y
+
+RUN python3 get-pip.py
 RUN pip install --upgrade pip
 RUN pip install requests
 
@@ -30,4 +32,4 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 EXPOSE 8002
 
 WORKDIR /app
-CMD ["python3", "./socket/script.py"]
+CMD ["python3", "./socket/script.py", "out"]
