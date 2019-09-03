@@ -43,7 +43,7 @@ RUN apt-get update -qq \
     pkg-config \
     # requirements for numpy
     libopenblas-base \
-    python3-numpy \
+   #  python3-numpy \
     python3-scipy \
     # requirements for keras
     python3-h5py \
@@ -54,6 +54,7 @@ RUN apt-get update -qq \
 
 # manually update numpy
 RUN pip3 --no-cache-dir install -U numpy==1.13.3
+
 
 RUN apt-get update  
 RUN apt-get dist-upgrade -y

@@ -65,6 +65,20 @@ def run_container(mangement_container_name,docker_version_name = "mytomcat1"):
         print("Command Error")
     return mangement_container_name
 
+def update_momery_container(mangement_container_name,size):
+        
+    try:
+        subprocess.check_call("docker update -m" + size +" --memory-swap -1 "+ mangement_container_name+, shell=True)
+    except subprocess.CalledProcessError as err:
+        print("Command Error")
+
+def update_cpu_container(mangement_container_name,size):
+        
+    try:
+        subprocess.check_call("docker update -m" + size +" "+ mangement_container_name", shell=True)
+    except subprocess.CalledProcessError as err:
+        print("Command Error")
+
 # def get_new_container_name(category):
 #     with open('container_port.csv', newline='') as csvfile:
 #         # Read CSV to dictionary
@@ -105,8 +119,4 @@ if __name__ == "__main__":
     mangement_container_name = "container_1"
     if args.dockerfile != "NULL" :
         print("Build dockerfile's named "+args.dockerfile)
-        build_container(args.dockerfile)
-        print("Run mangement container's named "+args.dockerfile)
-        mangement_container_name = run_container(mangement_container_name, args.dockerfile)
-
-    create_container(mangement_container_name, container_name)
+        build_container(args.docke
