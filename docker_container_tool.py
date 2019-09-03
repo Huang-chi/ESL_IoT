@@ -20,7 +20,7 @@ def create_container(mangement_container_name,container_name,docker_version_name
         print("Command Error")
 
 
-def delete_all_conttoller():
+def delete_all_container():
     try:
         subprocess.check_call("sudo docker stop $(sudo docker ps -a -q)", shell=True)
         subprocess.check_call("sudo docker rm $(sudo docker ps -a -q)", shell=True)
@@ -28,7 +28,7 @@ def delete_all_conttoller():
     except subprocess.CalledProcessError as err:
         print("Command Error")
 
-def delete_conttoller(container_name):
+def delete_container(container_name):
     try:
         subprocess.check_call("sudo docker stop "+container_name, shell=True)
         subprocess.check_call("sudo docker rm "+container_name, shell=True)
@@ -57,7 +57,7 @@ def build_container(image_name):
     except subprocess.CalledProcessError as err:
         print("Command Error")
 
-def run_container(mangement_container_name,docker_version_name = "mytomcat1"):
+def run_container(mangement_container_name,docker_version_name = "mytomcat2"):
     
     try:
         subprocess.check_call("sudo docker run -d --name "+mangement_container_name+" -it "+docker_version_name+" /bin/bash", shell=True)
@@ -88,10 +88,13 @@ if __name__ == "__main__":
     modify_dockerfile_port(container_name, category)
 
     mangement_container_name = "container_1"
+
+    
+
     if args.dockerfile != "NULL" :
         print("Build dockerfile's named "+args.dockerfile)
         build_container(args.dockerfile)
         print("Run mangement container's named "+args.dockerfile)
         mangement_container_name = run_container(mangement_container_name, args.dockerfile)
-
-    create_container(mangement_container_name, container_name)
+    
+    create_container(mangement_container_name, container_name, args.dockerfile)
