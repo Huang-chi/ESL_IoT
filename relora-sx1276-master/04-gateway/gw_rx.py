@@ -25,7 +25,11 @@ from time import sleep
 import time
 import json
 import packer
-import sys 
+import sys, os
+
+sys.path.append("../../socket")
+
+from client_for_outside import *
 import numpy as np
 sys.path.insert(0, '../')
 from SX127x.LoRa import *
