@@ -65,42 +65,13 @@ def run_container(mangement_container_name,docker_version_name = "mytomcat1"):
         print("Command Error")
     return mangement_container_name
 
-def update_momery_container(mangement_container_name,size):
-        
-    try:
-        subprocess.check_call("docker update -m" + size +" --memory-swap -1 "+ mangement_container_name+, shell=True)
-    except subprocess.CalledProcessError as err:
-        print("Command Error")
-
-def update_cpu_container(mangement_container_name,size):
-        
-    try:
-        subprocess.check_call("docker update -m" + size +" "+ mangement_container_name", shell=True)
-    except subprocess.CalledProcessError as err:
-        print("Command Error")
-
-# def get_new_container_name(category):
-#     with open('container_port.csv', newline='') as csvfile:
-#         # Read CSV to dictionary
-#         rows = csv.DictReader(csvfile)
-#         temp = []
-#         for row in rows:
-#             print(row)
-#             temp.append(row['container_name'])
-#         data_length = len(temp)
-
-#         # print(data_length)
-#         # print(temp[data_length-1][CONTAINER_WORD_LENGTH:])
-
-#         container_name = "container_"+category+"_"+str(int(temp[data_length-1][CONTAINER_WORD_LENGTH:])+1)
-#         print(container_name)
-#         return container_name
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Please enter images name: ')
     parser.add_argument("-t", "--dockerfile", type=str, default="NULL", help='Build dockerfile')
     parser.add_argument("-c", "--category", type=str, default="NULL", help='Chooses category')
+    parser.add_argument("-m", "--memory", type=str, default="NULL", help='Craeate memory size')
     args = parser.parse_args()
 
     category = ""
