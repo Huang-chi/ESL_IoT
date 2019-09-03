@@ -119,4 +119,8 @@ if __name__ == "__main__":
     mangement_container_name = "container_1"
     if args.dockerfile != "NULL" :
         print("Build dockerfile's named "+args.dockerfile)
-        build_container(args.docke
+        build_container(args.dockerfile)
+        print("Run mangement container's named "+args.dockerfile)
+        mangement_container_name = run_container(mangement_container_name, args.dockerfile)
+
+    create_container(mangement_container_name, container_name)
