@@ -4,8 +4,8 @@ import socket
 
 def listen_outside_network(port):
 
-#    HOST = '172.17.0.2' # container
-    HOST = '192.168.112.133' # host
+    HOST = '172.17.0.2' # container
+    # HOST = '192.168.161.129' # host
     PORT = port
 
 

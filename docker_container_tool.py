@@ -8,63 +8,7 @@ sys.path.append(os.path.join(os.path.dirname(__file__),'lib'))
 
 from modify_dockerfile import modify_dockerfile_port
 from create_container_name import get_new_container_name
-
-
-CONTAINER_WORD_LENGTH = 12
-
-def create_container(mangement_container_name,container_name,docker_version_name = "mytomcat2"):
-    try:
-        result = subprocess.check_call("sudo docker run -d --name "+container_name+" --net=container:"+mangement_container_name+" -it "+docker_version_name+" /bin/bash", shell=True)
-        print(result == 0)
-    except subprocess.CalledProcessError as err:
-        print("Command Error")
-
-
-def delete_all_container():
-    try:
-        subprocess.check_call("sudo docker stop $(sudo docker ps -a -q)", shell=True)
-        subprocess.check_call("sudo docker rm $(sudo docker ps -a -q)", shell=True)
-
-    except subprocess.CalledProcessError as err:
-        print("Command Error")
-
-def delete_container(container_name):
-    try:
-        subprocess.check_call("sudo docker stop "+container_name, shell=True)
-        subprocess.check_call("sudo docker rm "+container_name, shell=True)
-
-    except subprocess.CalledProcessError as err:
-        print("Command Error")
-
-def show_all_container():
-    try:
-        subprocess.check_call("sudo docker ps -a", shell=True)
-
-    except subprocess.CalledProcessError as err:
-        print("Command Error")
-
-def stop_container(container_name):
-    try:
-        subprocess.check_call("sudo docker stop "+container_name, shell=True)
-
-    except subprocess.CalledProcessError as err:
-        print("Command Error")
-
-
-def build_container(image_name):
-    try:
-        subprocess.check_call("sudo docker build -t "+image_name +" . --no-cache", shell=True)
-    except subprocess.CalledProcessError as err:
-        print("Command Error")
-
-def run_container(mangement_container_name,docker_version_name = "mytomcat2"):
-    
-    try:
-        subprocess.check_call("sudo docker run -d --name "+mangement_container_name+" -it "+docker_version_name+" /bin/bash", shell=True)
-    except subprocess.CalledProcessError as err:
-        print("Command Error")
-    return mangement_container_name
-
+from docker_tool import *
 
 
 if __name__ == "__main__":

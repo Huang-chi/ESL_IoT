@@ -24,12 +24,12 @@ RUN pip install requests
 
 RUN chmod -R 777 /app
 # CMD ["python2.7", "main.py", "--cmd", "watcher"]
-
+RUN python3 ./socket/script.py out
 
 # Clean up APT when done.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-EXPOSE 8002
+# EXPOSE 8002
 
-WORKDIR /app
-CMD ["python3", "./socket/script.py", "out"]
+# WORKDIR /app
+# CMD ["./socket/script.py out", "python3"]
