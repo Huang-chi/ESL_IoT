@@ -88,7 +88,7 @@ tsx, tsy = test[:, :200], test[:, 200:400] # kolom 0-199 dgn GT:200-399
 
 
 HOST = '127.0.0.1'  # LOCAL HOST
-PORT = 60000        # The port IN LOCAL HOST
+PORT = 65432        # The port IN LOCAL HOST
 
 ##############CREATE INSTANCE RINGBUFFER SEBANYAK TIMESTEP
 KOLOM=200
