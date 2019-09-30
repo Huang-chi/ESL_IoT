@@ -36,7 +36,18 @@ def transfer_to_json(message):
         jmsg1 = json.dumps(message)
         return jmsg1
 
-dataset = read_csv('Residential-Profiles_Plus_AVG_SORT.csv', header=0, index_col=0)
-values = dataset.values
+if __name__ == "__main__":
+    datasets = read_csv('Residential-Profiles_Plus_AVG_SORT.csv', header=0, index_col=0)
+    title_list = list(datasets)
+    dict = {}
 
-socket_connect(msg1)
+    for title in title_list:
+        value = datasets[title]
+        data_len = len(value)
+        print(data_len)
+        dict[title] = list(value)
+        # print(dict[title])
+
+    for title in title_list:
+        print(dict["H-30"][0:1])
+    # socket_connect(dict["H-30"])

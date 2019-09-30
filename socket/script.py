@@ -1,8 +1,8 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
 import sys
-from socker_listen_for_outside import *
-from socker_listen_for_inner import *
+from socket_listen_for_outside import *
+from socket_listen_for_inner import *
 
 values = ""
 
