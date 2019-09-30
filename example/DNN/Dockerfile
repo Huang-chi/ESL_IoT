@@ -72,5 +72,5 @@ RUN apt-get install procps -y
 
 #EXPOSE 65432
 WORKDIR /app
-CMD ["python3","DNN_SERVER01.py"]
+CMD ["python3","./app/DNN_SERVER01.py"]
 
