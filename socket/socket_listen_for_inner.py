@@ -1,6 +1,7 @@
 #!/usr/bin/env python python3
 
 import socket
+import pandas as pd
 import socketserver
 import json, types,string
 
@@ -19,7 +20,6 @@ def listen_inner_network(port):
             print('Connected by', addr )
             data = conn.recv(16)
             print(type(repr(data)))
-            print(repr(data)[2:-1])
 
             print('Connected by', addr )
             data = conn.recv(int(repr(data)[2:-1]))
