@@ -53,8 +53,8 @@ RUN apt-get update -qq \
  && rm -rf /var/lib/apt/lists/*
 
 # manually update numpy
-RUN pip3 --no-cache-dir install -U numpy==1.13.3
-
+#RUN pip3 --no-cache-dir install -U numpy==1.13.3
+RUN pip3 install pandas
 
 RUN apt-get update  
 RUN apt-get dist-upgrade -y
@@ -62,7 +62,7 @@ RUN apt-get install wget
 RUN wget https://github.com/lhelontra/tensorflow-on-arm/releases/download/v1.8.0/tensorflow-1.8.0-cp35-none-linux_armv7l.whl
 RUN pip3 install tensorflow-1.8.0-cp35-none-linux_armv7l.whl
 RUN pip3 install mock
-RUN pip3 install keras
+RUN pip3 install keras==2.1.5 
 #RUN python3 -c 'import keras; print(keras.__version__)'
 RUN apt-get install nano
 #RUN sudo -H pip3 install pandas
@@ -70,7 +70,7 @@ RUN apt-get install net-tools
 RUN apt-get install procps -y
 
 
-EXPOSE 65432
+#EXPOSE 65432
 WORKDIR /app
-CMD ["python3","DNN_SERVER01.py"]
+CMD ["python3","./app/DNN_SERVER01.py"]
 
