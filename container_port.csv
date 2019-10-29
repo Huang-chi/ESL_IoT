@@ -1,6 +1,18 @@
 container_name,port
-container_MG_1,6000
 
-container_DN_2,6001
-container_DN_3,6002
-container_DN_4,6003
+container_M_0,6000
+
+container_I_1,6001
+container_I_2,6002
+container_I_3,6003
+container_I_4,6004
+container_I_5,6005
+container_I_6,6006
+container_I_7,6007
+container_I_8,6008
+container_I_9,6009
+container_D_10,6010
+container_I_11,6011
+container_I_12,6012
+container_D_13,6013
+container_D_14,6014

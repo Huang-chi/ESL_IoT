@@ -36,7 +36,7 @@ from SX127x.LoRaArgumentParser import LoRaArgumentParser
 import queue
 #from multiprocessing import Queue
 from buf import QuBuf
-sys.path.append("../../socket")
+sys.path.append("../../socket_lib")
 print(sys.path)
 from client_for_outside import *
 

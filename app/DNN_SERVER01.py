@@ -52,7 +52,7 @@ KOLOM=200
 dt = np.dtype([('ID', np.int64), ('TIMESTAMP', np.float64),('USAGE',np.float64),('STATUS',np.str,8)])
 ts_data = np.zeros((200), dtype=dt) #creating array of new datatype
 HOST = '127.0.0.1'  # (localhost) run in  HOST/RASP-PI
-HOST = '172.17.0.2'  # RUN IN CONTAINER FIND THE SERVER ADDRESS FIRST.
+#HOST = '172.17.0.2'  # RUN IN CONTAINER FIND THE SERVER ADDRESS FIRST.
 
 def gethostIP():
    try:
@@ -62,7 +62,7 @@ def gethostIP():
    except:
        print("Unable to get Hostname or IP")
 
-HOST = gethostIP()
+#HOST = gethostIP()
 
 PORT = 65432  # PORT IN THE CONTAINER
 #PORT = 60000  # PORT IN THE HOST

@@ -1,6 +1,6 @@
 #!/usr/bin/env python python3
 import csv
-CONTAINER_WORD_LENGTH = 13
+CONTAINER_WORD_LENGTH = 12
 
 
 def get_new_container_name(category):
@@ -13,11 +13,12 @@ def get_new_container_name(category):
             temp.append(row['container_name'])
         data_length = len(temp)
 
-        print(data_length)
-        print(temp[data_length-1][CONTAINER_WORD_LENGTH:])
-        print(category)
+        # print(data_length)
+        # print(temp[data_length-1][CONTAINER_WORD_LENGTH:])
+        # print(category)
+        print(int(temp[data_length-1][CONTAINER_WORD_LENGTH:])+1)
 
-        container_name = "container_"+category[:2]+"_"+str(int(temp[data_length-1][CONTAINER_WORD_LENGTH:])+1)
+        container_name = "container_"+category[:1]+"_"+str(int(temp[data_length-1][CONTAINER_WORD_LENGTH:])+1)
         print(container_name)
         return container_name
 

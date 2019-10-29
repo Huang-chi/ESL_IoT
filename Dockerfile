@@ -1,35 +1,76 @@
-#FROM phusion/baseimage:0.10.1
-From debian:stretch
+# docker-keras - Keras in Docker with Python 3 and TensorFlow on CPU
+#sudo docker run -d -i -t -p 127.0.0.1:8000:65432   /bin/bash
+#docker ex6014 3a1fabcb23e5 > mycontainer_ex6014.tar
+#docker exec -it ubuntu bash
+#docker cp ./DNN_CLIENT01.py 3a1fabcb23e5:/app/DNN_CLIENT01.py
+#docker cp ./DNN_SERVER01.py 3a1fabcb23e5:/app/DNN_SERVER01.py
+#sudo docker ps
+#df
+#docker container ls
+#docker ex6014 3a1fabcb23e5 > mycontainer_ex6014.tar
+#ls -la
+#rm myinterim2_ex6014.tar 
+## apt-get install procps  
+#docker inspect 6a74deec3511 | grep "IPAddress"
 
 
-# Use baseimage-docker's init system.
-CMD ["/sbin/my_init"]
 
-# ...put your own build instructions here...
+FROM debian:stretch
+
+#MAINTAINER gw0 [http://gw.tnode.com/] <gw.2018@ena.one>
+
+#ADD ./app /app
+
 WORKDIR /app
-COPY . /app
-ADD https://bootstrap.pypa.io/get-pip.py /app/get-pip.py
-# ADD .socker_listen.py /app/socker_listen.py
-# ADD .script.py /app/script.py
+COPY ./app /app/app
+COPY ./socket_lib /app/socket_lib
 
-RUN apt-get update && \
-    apt-get install -y python3 &&\
-    apt-get -y install netcat
+# install debian packages
+ENV DEBIAN_FRONTEND noninteractive
+RUN apt-get update -qq \
+ && apt-get install --no-install-recommends -y \
+    # install essentials
+    build-essential \
+    g++ \
+    git \
+    openssh-client \
+    # install python 3
+    python3 \
+    python3-dev \
+    python3-pip \
+    python3-setuptools \
+    python3-virtualenv \
+    python3-wheel \
+    pkg-config \
+    # requirements for numpy
+    libopenblas-base \
+   #  python3-numpy \
+    python3-scipy \
+    # requirements for keras
+    python3-h5py \
+    python3-yaml \
+    python3-pydot \
+ && apt-get clean \
+ && rm -rf /var/lib/apt/lists/*
 
-RUN apt-get install vim -y
+# manually update numpy
+#RUN pip3 --no-cache-dir install -U numpy==1.13.3
+RUN pip3 install pandas
 
-RUN python3 get-pip.py
-RUN pip install --upgrade pip
-RUN pip install requests
+RUN apt-get update  
+RUN apt-get dist-upgrade -y
+RUN apt-get install wget
+RUN wget https://github.com/lhelontra/tensorflow-on-arm/releases/download/v1.8.0/tensorflow-1.8.0-cp35-none-linux_armv7l.whl
+RUN pip3 install tensorflow-1.8.0-cp35-none-linux_armv7l.whl
+RUN pip3 install mock
+RUN pip3 install keras==2.1.5 
+#RUN python3 -c 'im6014 keras; print(keras.__version__)'
+RUN apt-get install nano
+#RUN sudo -H pip3 install pandas
+RUN apt-get install net-tools
+RUN apt-get install procps -y
 
-RUN chmod -R 777 /app
-# CMD ["python2.7", "main.py", "--cmd", "watcher"]
-RUN python3 ./socket/script.py out
 
-# Clean up APT when done.
-RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+WORKDIR /app
+CMD ["python3","./app/DNN_SERVER01.py"]
 
-# EXPOSE 8002
-
-# WORKDIR /app
-# CMD ["./socket/script.py out", "python3"]

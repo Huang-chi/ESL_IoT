@@ -27,7 +27,7 @@ import json
 import packer
 import sys, os
 
-sys.path.append("../../socket")
+sys.path.append("../../socket_lib")
 
 from client_for_outside import *
 import numpy as np

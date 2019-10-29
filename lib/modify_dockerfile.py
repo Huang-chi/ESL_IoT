@@ -4,9 +4,9 @@ from search_container_port import write_new_data
 
 def modify_dockerfile_port(container_name, category):
 
-    # fopen = open("./example/"+category+"/Dockerfile", 'r+')
-    fopen = open("./example/Dockerfile", 'r+')
+    fopen = open("./example/"+category+"/Dockerfile", 'r+')
     w_str = ""
+    
     port = str(check_no_same_port())
     write_new_data(container_name, port)
 

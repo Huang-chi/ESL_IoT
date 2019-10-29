@@ -37,7 +37,7 @@ import queue
 #from multiprocessing import queue
 from buf import QuBuf
 
-sys.path.append('../../socket')
+sys.path.append('../../socket_lib')
 #print(sys.path)
 from client_for_outside import socket_connect
 #from socket_listen_for_outside import listen_outside_network
